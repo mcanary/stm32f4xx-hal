@@ -90,60 +90,60 @@
 #define HAL_RCC_PLLI2SCFGR_PLLI2SR_POSITION RCC_PLLI2SCFGR_PLLI2SR_Pos  // I2S PLL R position
 
 /* RCC_CFGR_SW (System Clock Switch) Enumerations */
-#define HAL_RCC_CFGR_SW_HSI 0x0  // High-speed internal oscillator
-#define HAL_RCC_CFGR_SW_HSE 0x1  // High-speed external oscillator
-#define HAL_RCC_CFGR_SW_PLL 0x2  // Main PLL
+#define HAL_RCC_CFGR_SW_HSI (0x0)  // High-speed internal oscillator
+#define HAL_RCC_CFGR_SW_HSE (0x1)  // High-speed external oscillator
+#define HAL_RCC_CFGR_SW_PLL (0x2)  // Main PLL
 
 /* RCC_CFGR_HPRE (AHB Clock Prescaler) Enumerations */
-#define HAL_RCC_CFGR_AHBPRE_1   0x0  // AHBPRE = 1
-#define HAL_RCC_CFGR_AHBPRE_2   0x8  // AHBPRE = 2
-#define HAL_RCC_CFGR_AHBPRE_4   0x9  // AHBPRE = 4
-#define HAL_RCC_CFGR_AHBPRE_8   0xa  // AHBPRE = 8
-#define HAL_RCC_CFGR_AHBPRE_16  0xb  // AHBPRE = 16
-#define HAL_RCC_CFGR_AHBPRE_64  0xc  // AHBPRE = 64
-#define HAL_RCC_CFGR_AHBPRE_128 0xd  // AHBPRE = 128
-#define HAL_RCC_CFGR_AHBPRE_256 0xe  // AHBPRE = 256
-#define HAL_RCC_CFGR_AHBPRE_512 0xf  // AHBPRE = 512
+#define HAL_RCC_CFGR_AHBPRE_1   (0x0)  // AHBPRE = 1
+#define HAL_RCC_CFGR_AHBPRE_2   (0x8)  // AHBPRE = 2
+#define HAL_RCC_CFGR_AHBPRE_4   (0x9)  // AHBPRE = 4
+#define HAL_RCC_CFGR_AHBPRE_8   (0xa)  // AHBPRE = 8
+#define HAL_RCC_CFGR_AHBPRE_16  (0xb)  // AHBPRE = 16
+#define HAL_RCC_CFGR_AHBPRE_64  (0xc)  // AHBPRE = 64
+#define HAL_RCC_CFGR_AHBPRE_128 (0xd)  // AHBPRE = 128
+#define HAL_RCC_CFGR_AHBPRE_256 (0xe)  // AHBPRE = 256
+#define HAL_RCC_CFGR_AHBPRE_512 (0xf)  // AHBPRE = 512
 
 /* RCC_CFGR_PPRE[1, 2] (APB1/2 Clock Prescaler) Enumerations */
-#define HAL_RCC_CFGR_APBPRE_1  0x0  // APBPRE = 1
-#define HAL_RCC_CFGR_APBPRE_2  0x4  // APBPRE = 2
-#define HAL_RCC_CFGR_APBPRE_4  0x5  // APBPRE = 4
-#define HAL_RCC_CFGR_APBPRE_8  0x6  // APBPRE = 8
-#define HAL_RCC_CFGR_APBPRE_16 0x7  // APBPRE = 16
+#define HAL_RCC_CFGR_APBPRE_1  (0x0)  // APBPRE = 1
+#define HAL_RCC_CFGR_APBPRE_2  (0x4)  // APBPRE = 2
+#define HAL_RCC_CFGR_APBPRE_4  (0x5)  // APBPRE = 4
+#define HAL_RCC_CFGR_APBPRE_8  (0x6)  // APBPRE = 8
+#define HAL_RCC_CFGR_APBPRE_16 (0x7)  // APBPRE = 16
 
 /* RCC_CFGR_MCO1 (MCO1 Source) Enumerations */
-#define HAL_RCC_CFGR_MCO1_HSI 0x0  // High-speed internal oscillator
-#define HAL_RCC_CFGR_MCO1_LSE 0x1  // Low-speed external oscillator
-#define HAL_RCC_CFGR_MCO1_HSE 0x2  // High-speed external oscillator
-#define HAL_RCC_CFGR_MCO1_PLL 0x3  // Main PLL
+#define HAL_RCC_CFGR_MCO1_HSI (0x0)  // High-speed internal oscillator
+#define HAL_RCC_CFGR_MCO1_LSE (0x1)  // Low-speed external oscillator
+#define HAL_RCC_CFGR_MCO1_HSE (0x2)  // High-speed external oscillator
+#define HAL_RCC_CFGR_MCO1_PLL (0x3)  // Main PLL
 
 /* RCC_CFGR_MCO2 (MCO2 Source) Enumerations */
-#define HAL_RCC_CFGR_MCO2_SYSCLK 0x0  // System clock
-#define HAL_RCC_CFGR_MCO2_PLLI2S 0x1  // I2S PLL
-#define HAL_RCC_CFGR_MCO2_HSE    0x2  // High-speed external oscillator
-#define HAL_RCC_CFGR_MCO2_PLL    0x3  // Main PLL
+#define HAL_RCC_CFGR_MCO2_SYSCLK (0x0)  // System clock
+#define HAL_RCC_CFGR_MCO2_PLLI2S (0x1)  // I2S PLL
+#define HAL_RCC_CFGR_MCO2_HSE    (0x2)  // High-speed external oscillator
+#define HAL_RCC_CFGR_MCO2_PLL    (0x3)  // Main PLL
 
 /* RCC_CFGR_I2SSRC (I2S PLL Clock Source) Enumerations */
-#define HAL_RCC_CFGR_I2SSOURCE_PLLI2S  0x0  // I2S PLL
-#define HAL_RCC_CFGR_I2SSOURCE_I2SCKIN 0x1  // External I2S clock input
+#define HAL_RCC_CFGR_I2SSOURCE_PLLI2S  (0x0)  // I2S PLL
+#define HAL_RCC_CFGR_I2SSOURCE_I2SCKIN (0x1)  // External I2S clock input
 
 /* RCC_CFGR_MCO[1, 2]PRE (MCO Prescaler) Enumerations */
-#define HAL_RCC_CFGR_MCOPRE_1 0x0  // MCOPRE = 1
-#define HAL_RCC_CFGR_MCOPRE_2 0x4  // MCOPRE = 2
-#define HAL_RCC_CFGR_MCOPRE_3 0x5  // MCOPRE = 3
-#define HAL_RCC_CFGR_MCOPRE_4 0x6  // MCOPRE = 4
-#define HAL_RCC_CFGR_MCOPRE_5 0x7  // MCOPRE = 5
+#define HAL_RCC_CFGR_MCOPRE_1 (0x0)  // MCOPRE = 1
+#define HAL_RCC_CFGR_MCOPRE_2 (0x4)  // MCOPRE = 2
+#define HAL_RCC_CFGR_MCOPRE_3 (0x5)  // MCOPRE = 3
+#define HAL_RCC_CFGR_MCOPRE_4 (0x6)  // MCOPRE = 4
+#define HAL_RCC_CFGR_MCOPRE_5 (0x7)  // MCOPRE = 5
 
 /* RCC_PLLCFGR_PLLP (Main PLL P) Enumerations */
-#define HAL_RCC_PLLCFGR_PLLP_2 0x0  // PLLP = 2
-#define HAL_RCC_PLLCFGR_PLLP_4 0x1  // PLLP = 4
-#define HAL_RCC_PLLCFGR_PLLP_6 0x2  // PLLP = 6
-#define HAL_RCC_PLLCFGR_PLLP_8 0x3  // PLLP = 8
+#define HAL_RCC_PLLCFGR_PLLP_2 (0x0)  // PLLP = 2
+#define HAL_RCC_PLLCFGR_PLLP_4 (0x1)  // PLLP = 4
+#define HAL_RCC_PLLCFGR_PLLP_6 (0x2)  // PLLP = 6
+#define HAL_RCC_PLLCFGR_PLLP_8 (0x3)  // PLLP = 8
 
 /* RCC_PLLCFGR_PLLSRC (Main PLL Clock Source) Enumerations */
-#define HAL_RCC_PLLCFGR_PLLSRC_HSI 0x0  // High-speed internal oscillator
-#define HAL_RCC_PLLCFGR_PLLSRC_HSE 0x1  // High-speed external oscillator
+#define HAL_RCC_PLLCFGR_PLLSRC_HSI (0x0)  // High-speed internal oscillator
+#define HAL_RCC_PLLCFGR_PLLSRC_HSE (0x1)  // High-speed external oscillator
 
 /* RCC_PLLCFG Config Mask */
 #define HAL_RCC_PLLCFG_MASK (HAL_RCC_PLLCFGR_PLLM_MASK | \
