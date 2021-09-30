@@ -78,26 +78,26 @@
 /* Public Type Definitions *
  ***************************/
 
-typedef I2C_TypeDef HAL_I2C_Port;
+typedef I2C_TypeDef hal_i2c_Port;
 
-typedef struct HAL_I2C_ConfigStruct
+typedef struct hal_i2c_ConfigStruct
 {
     uint32_t APB_ClockFrequency;  // APB clock frequency
     bool FastMode;                // Fast mode enable
     bool I2C_Enable;              // I2C peripheral enable
-}HAL_I2C_ConfigStruct;
+}hal_i2c_ConfigStruct;
 
 
 /******************************
 /* Public Function Prototypes *
  ******************************/
 
-void HAL_I2C_Init(HAL_I2C_Port *i2c_port, HAL_I2C_ConfigStruct *config);
-bool HAL_I2C_IsBusy(HAL_I2C_Port *i2c_port);
-void HAL_I2C_WriteDataBlocking(HAL_I2C_Port *i2c_port, uint8_t dev_address, uint8_t *reg_address, uint8_t address_length, uint8_t *data, uint8_t data_length);
-void HAL_I2C_ReadDataBlocking(HAL_I2C_Port *i2c_port, uint8_t dev_address, uint8_t *reg_address, uint8_t address_length, uint8_t *data, uint8_t data_length);
-void HAL_I2C_WriteDataNonBlocking(HAL_I2C_Port *i2c_port, uint8_t dev_address, uint8_t *reg_address, uint8_t address_length, uint8_t *data, uint8_t data_length);
-void HAL_I2C_ReadDataNonBlocking(HAL_I2C_Port *i2c_port, uint8_t dev_address, uint8_t *reg_address, uint8_t address_length, uint8_t *data, uint8_t data_length);
+void hal_i2c_Init(hal_i2c_Port *i2c_port, hal_i2c_ConfigStruct *config);
+bool hal_i2c_IsBusy(hal_i2c_Port *i2c_port);
+void hal_i2c_WriteDataBlocking(hal_i2c_Port *i2c_port, uint8_t dev_address, uint8_t *reg_address, uint8_t address_length, uint8_t *data, uint8_t data_length);
+void hal_i2c_ReadDataBlocking(hal_i2c_Port *i2c_port, uint8_t dev_address, uint8_t *reg_address, uint8_t address_length, uint8_t *data, uint8_t data_length);
+void hal_i2c_WriteDataNonBlocking(hal_i2c_Port *i2c_port, uint8_t dev_address, uint8_t *reg_address, uint8_t address_length, uint8_t *data, uint8_t data_length);
+void hal_i2c_ReadDataNonBlocking(hal_i2c_Port *i2c_port, uint8_t dev_address, uint8_t *reg_address, uint8_t address_length, uint8_t *data, uint8_t data_length);
 
 
 #endif /* __HAL_I2C */

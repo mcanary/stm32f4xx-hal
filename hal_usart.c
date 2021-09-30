@@ -14,40 +14,40 @@
  ****************************/
 
 /* Transmit State Machine Enumerations */
-enum HAL_USART_TransmitState
+enum hal_usart_TransmitState
 {
     TRANSMITTING,
     IDLE
 }
 
 /* Receive State Machine Enumerations */
-enum HAL_USART_ReceiveState
+enum hal_usart_ReceiveState
 {
     RECEIVING,
     IDLE
 }
 
 /* USART Peripheral State Struct */
-typedef struct HAL_USART_StateStruct
+typedef struct hal_usart_StateStruct
 {
-    enum HAL_USART_TransmitState transmit_state;
+    enum hal_usart_TransmitState transmit_state;
     char                         *transmit_buffer;
     uint32_t                     transmit_length;
     uint32_t                     transmit_index;
-    enum HAL_USART_ReceiveState  receive_state;
+    enum hal_usart_ReceiveState  receive_state;
     char                         *receive_buffer;
     uint32_t                     receive_index;
     uint32_t                     receive_length;
-}HAL_USART_StateStruct;
+}hal_usart_StateStruct;
 
 
 /*******************************
 /* Private Function Prototypes *
  *******************************/
 
-static uint8_t HAL_USART_GetPeripheralIndex(HAL_USART_Port *usart_port);
-static IRQn_Type HAL_USART_GetPeripheralIRQ(HAL_USART_Port *usart_port);
-static void HAL_USART_GenericIRQHandler(HAL_USART_Port *usart_port);
+static uint8_t hal_usart_GetPeripheralIndex(hal_usart_Port *usart_port);
+static IRQn_Type hal_usart_GetPeripheralIRQ(hal_usart_Port *usart_port);
+static void hal_usart_GenericIRQHandler(hal_usart_Port *usart_port);
 
 
 /*********************
@@ -55,7 +55,7 @@ static void HAL_USART_GenericIRQHandler(HAL_USART_Port *usart_port);
  *********************/
 
 /* USART Peripheral State Table */
-static HAL_USART_StateStruct state_table[HAL_USART_NUM_PERIPHERALS];
+static hal_usart_StateStruct state_table[HAL_USART_NUM_PERIPHERALS];
 
 
 /********************
@@ -67,7 +67,7 @@ static HAL_USART_StateStruct state_table[HAL_USART_NUM_PERIPHERALS];
  * @param usart_port Peripheral base address for the USART port of interest
  * @param config     Pointer to a struct containing the USART port configuration parameters
  */
-void HAL_USART_Init(HAL_USART_Port *usart_port, HAL_USART_ConfigStruct *config)
+void hal_usart_Init(hal_usart_Port *usart_port, hal_usart_ConfigStruct *config)
 {
 
     MODIFY_REG(usart_port->BRR, HAL_USART_BRR_MASK, \
@@ -85,7 +85,7 @@ void HAL_USART_Init(HAL_USART_Port *usart_port, HAL_USART_ConfigStruct *config)
 
     MODIFY_REG(usart_port->CR2, HAL_USART_CR2_MASK, (config->StopBits << HAL_USART_CR2_STOP_POSITION));
 
-    uint8_t peripheral_index = HAL_USART_GetPeripheralIndex(*usart_port);
+    uint8_t peripheral_index = hal_usart_GetPeripheralIndex(*usart_port);
 
     state_table[peripheral_index]->transmit_state = IDLE;
     state_table[peripheral_index]->receive_state = IDLE;
@@ -98,7 +98,7 @@ void HAL_USART_Init(HAL_USART_Port *usart_port, HAL_USART_ConfigStruct *config)
 
     }
 
-    __NVIC_EnableIRQ(HAL_USART_GetPeripheralIRQ(*usart_port))
+    __NVIC_EnableIRQ(hal_usart_GetPeripheralIRQ(*usart_port))
 
 }
 
@@ -108,7 +108,7 @@ void HAL_USART_Init(HAL_USART_Port *usart_port, HAL_USART_ConfigStruct *config)
  * @param data       Pointer to an array of characters to transmit
  * @param length     Number of bytes to transmit
  */
-void HAL_USART_TransmitBlocking(HAL_USART_Port *usart_port, char *data, uint32_t length)
+void hal_usart_TransmitBlocking(hal_usart_Port *usart_port, char *data, uint32_t length)
 {
 
     for(uint32_t data_index = 0; data_index < length; data_index++)
@@ -127,10 +127,10 @@ void HAL_USART_TransmitBlocking(HAL_USART_Port *usart_port, char *data, uint32_t
  * @param data       Pointer to an array of characters to transmit
  * @param length     Number of bytes to transmit
  */
-void HAL_USART_TransmitNonBlocking(HAL_USART_Port *usart_port, char *data, uint32_t length)
+void hal_usart_TransmitNonBlocking(hal_usart_Port *usart_port, char *data, uint32_t length)
 {
 
-    uint8_t peripheral_index = HAL_USART_GetPeripheralIndex(*usart_port);
+    uint8_t peripheral_index = hal_usart_GetPeripheralIndex(*usart_port);
 
     state_table[peripheral_index]->transmit_buffer = data;
     state_table[peripheral_index]->transmit_length = length;
@@ -152,7 +152,7 @@ void HAL_USART_TransmitNonBlocking(HAL_USART_Port *usart_port, char *data, uint3
  * @param usart_port Peripheral base address for the USART port of interest
  * @return Peripheral state table index for the specified USART port
  */
-static uint8_t HAL_USART_GetPeripheralIndex(HAL_USART_Port *usart_port)
+static uint8_t hal_usart_GetPeripheralIndex(hal_usart_Port *usart_port)
 {
 
     switch(usart_port)
@@ -185,7 +185,7 @@ static uint8_t HAL_USART_GetPeripheralIndex(HAL_USART_Port *usart_port)
  * @param usart_port Peripheral base address for the USART port of interest
  * @return Interrupt vector entry for the specified USART port
  */
-static IRQn_Type HAL_USART_GetPeripheralIRQ(HAL_USART_Port *usart_port)
+static IRQn_Type hal_usart_GetPeripheralIRQ(hal_usart_Port *usart_port)
 {
 
     switch(usart_port)
@@ -222,11 +222,11 @@ static IRQn_Type HAL_USART_GetPeripheralIRQ(HAL_USART_Port *usart_port)
  * @brief Generic interrupt handler for a USART port, containing a simple state machine for non-blocking transmit
  * @param usart_port Peripheral base address for the USART port of interest
  */
-static void HAL_USART_GenericIRQHandler(HAL_USART_Port *usart_port)
+static void hal_usart_GenericIRQHandler(hal_usart_Port *usart_port)
 {
 
     uint32_t usart_status = READ_REG(usart_port->SR);
-    uint8_t peripheral_index = HAL_USART_GetPeripheralIndex(*usart_port);
+    uint8_t peripheral_index = hal_usart_GetPeripheralIndex(*usart_port);
 
 
     if(state_table[peripheral_index]->transmit_state == TRANSMITTING)
@@ -262,7 +262,7 @@ static void HAL_USART_GenericIRQHandler(HAL_USART_Port *usart_port)
 void USART1_IRQHandler(void)
 {
 
-    HAL_USART_GenericIRQHandler(USART1);
+    hal_usart_GenericIRQHandler(USART1);
 
 }
 
@@ -272,7 +272,7 @@ void USART1_IRQHandler(void)
 void USART2_IRQHandler(void)
 {
 
-    HAL_USART_GenericIRQHandler(USART2);
+    hal_usart_GenericIRQHandler(USART2);
 
 }
 
@@ -282,7 +282,7 @@ void USART2_IRQHandler(void)
 void USART3_IRQHandler(void)
 {
 
-    HAL_USART_GenericIRQHandler(USART3);
+    hal_usart_GenericIRQHandler(USART3);
 
 }
 
@@ -292,7 +292,7 @@ void USART3_IRQHandler(void)
 void USART4_IRQHandler(void)
 {
 
-    HAL_USART_GenericIRQHandler(USART4);
+    hal_usart_GenericIRQHandler(USART4);
 
 }
 
@@ -302,7 +302,7 @@ void USART4_IRQHandler(void)
 void USART5_IRQHandler(void)
 {
 
-    HAL_USART_GenericIRQHandler(USART5);
+    hal_usart_GenericIRQHandler(USART5);
 
 }
 
@@ -312,7 +312,7 @@ void USART5_IRQHandler(void)
 void USART6_IRQHandler(void)
 {
 
-    HAL_USART_GenericIRQHandler(USART6);
+    hal_usart_GenericIRQHandler(USART6);
 
 }
 
