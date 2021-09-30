@@ -97,43 +97,43 @@
  ***************************/
 
 /* USART Port Definition */
-typedef USART_TypeDef HAL_USART_Port;
+typedef USART_TypeDef hal_usart_Port;
 
 /* USART Configuration Field Definitions */
-typedef uint16_t HAL_USART_BaudMantissa;
-typedef uint8_t  HAL_USART_BaudFraction;
-typedef uint8_t  HAL_USART_ParitySelection;
-typedef uint8_t  HAL_USART_WordLength;
-typedef uint8_t  HAL_USART_OversamplingMode;
-typedef uint8_t  HAL_USART_StopBits;
-typedef bool     HAL_USART_TransmitEnable;
-typedef bool     HAL_USART_ReceiveEnable;
-typedef bool     HAL_USART_ParityControlEnable;
-typedef bool     HAL_USART_USARTEnable;
+typedef uint16_t hal_usart_BaudMantissa;
+typedef uint8_t  hal_usart_BaudFraction;
+typedef uint8_t  hal_usart_ParitySelection;
+typedef uint8_t  hal_usart_WordLength;
+typedef uint8_t  hal_usart_OversamplingMode;
+typedef uint8_t  hal_usart_StopBits;
+typedef bool     hal_usart_TransmitEnable;
+typedef bool     hal_usart_ReceiveEnable;
+typedef bool     hal_usart_ParityControlEnable;
+typedef bool     hal_usart_USARTEnable;
 
 /* USART Peripheral Instance Definition */
-typedef struct HAL_USART_ConfigStruct
+typedef struct hal_usart_ConfigStruct
 {
-    HAL_USART_BaudMantissa        BaudMantissa;         // Baud rate divider mantissa
-    HAL_USART_BaudFraction        BaudFraction;         // Baud rate divider fraction
-    HAL_USART_TransmitEnable      TransmitEnable;       // USART transmitter enable
-    HAL_USART_ReceiveEnable       ReceiveEnable;        // USART receiver enable
-    HAL_USART_ParityControlEnable ParityControlEnable;  // Parity control enable
-    HAL_USART_ParitySelection     ParitySelection;      // Parity mode
-    HAL_USART_WordLength          WordLength;           // Word length
-    HAL_USART_USARTEnable         USART_Enable;         // USART peripheral enable
-    HAL_USART_OversamplingMode    OversamplingMode;     // Oversampling mode
-    HAL_USART_StopBits            StopBits;             // Number of stop bits
-}HAL_USART_ConfigStruct;
+    hal_usart_BaudMantissa        BaudMantissa;         // Baud rate divider mantissa
+    hal_usart_BaudFraction        BaudFraction;         // Baud rate divider fraction
+    hal_usart_TransmitEnable      TransmitEnable;       // USART transmitter enable
+    hal_usart_ReceiveEnable       ReceiveEnable;        // USART receiver enable
+    hal_usart_ParityControlEnable ParityControlEnable;  // Parity control enable
+    hal_usart_ParitySelection     ParitySelection;      // Parity mode
+    hal_usart_WordLength          WordLength;           // Word length
+    hal_usart_USARTEnable         USART_Enable;         // USART peripheral enable
+    hal_usart_OversamplingMode    OversamplingMode;     // Oversampling mode
+    hal_usart_StopBits            StopBits;             // Number of stop bits
+}hal_usart_ConfigStruct;
 
 
 /******************************
 /* Public Function Prototypes *
  ******************************/
 
-void HAL_USART_Init(HAL_USART_Port *usart_port, HAL_USART_ConfigStruct *config);
-void HAL_USART_TransmitBlocking(HAL_USART_Port *usart_port, char *data, uint32_t length);
-void HAL_USART_TransmitNonBlocking(HAL_USART_Port *usart_port, char *data, uint32_t length);
+void hal_usart_Init(hal_usart_Port *usart_port, hal_usart_ConfigStruct *config);
+void hal_usart_TransmitBlocking(hal_usart_Port *usart_port, char *data, uint32_t length);
+void hal_usart_TransmitNonBlocking(hal_usart_Port *usart_port, char *data, uint32_t length);
 
 
 #endif /* __HAL_USART */
