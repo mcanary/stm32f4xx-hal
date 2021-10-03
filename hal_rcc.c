@@ -202,3 +202,51 @@ void hal_rcc_DisablePLLI2S(void)
 
 }
 
+/**
+ * @brief Enable the peripheral clock for the specified GPIO port
+ * @param gpio_port GPIO port for which the peripheral clock should be enabled
+ */
+void hal_rcc_EnableGPIOClock(hal_gpio_Port gpio_port)
+{
+
+    switch(gpio_port)
+    {
+
+        case GPIOA:
+
+            SET_BIT(RCC->AHB1ENR, HAL_RCC_AHB1ENR_GPIOAENR_MASK);
+            break;
+
+        case GPIOB:
+
+            SET_BIT(RCC->AHB1ENR, HAL_RCC_AHB1ENR_GPIOBENR_MASK);
+            break;
+
+        case GPIOC:
+
+            SET_BIT(RCC->AHB1ENR, HAL_RCC_AHB1ENR_GPIOCENR_MASK);
+            break;
+
+        case GPIOD:
+
+            SET_BIT(RCC->AHB1ENR, HAL_RCC_AHB1ENR_GPIODENR_MASK);
+            break;
+
+        case GPIOE:
+
+            SET_BIT(RCC->AHB1ENR, HAL_RCC_AHB1ENR_GPIOEENR_MASK);
+            break;
+
+        case GPIOH:
+
+            SET_BIT(RCC->AHB1ENR, HAL_RCC_AHB1ENR_GPIOHENR_MASK);
+            break;
+
+        default:
+
+            break;
+
+    }
+
+}
+
