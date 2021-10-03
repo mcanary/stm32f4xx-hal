@@ -67,7 +67,7 @@
 
 /* USART_CR1_OVER8 (Oversampling Mode) Enumerations */
 #define HAL_USART_CR1_OVER8_16 (0x0)  // Oversampling by 8
-#define HAL_USART_OVER8_8      (0x1)  // Oversampling by 16
+#define HAL_USART_CR1_OVER8_8  (0x1)  // Oversampling by 16
 
 /* USART_CR2_STOP (Number of Stop Bits) Enumerations */
 #define HAL_USART_CR2_STOP_1   (0x0)  // 1 stop bit
