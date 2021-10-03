@@ -250,3 +250,31 @@ void hal_rcc_EnableGPIOClock(hal_gpio_Port gpio_port)
 
 }
 
+/**
+ * @brief Enable the peripheral clock for the specified USART port
+ * @param usart_port USART port for which the peripheral clock should be enabled
+ */
+void hal_rcc_EnableUSARTClock(hal_usart_Port usart_port)
+{
+
+    switch(usart_port)
+    {
+
+        case USART1:
+
+            SET_BIT(RCC->APB2ENR, HAL_RCC_APB2ENR_USART1EN_MASK);
+            break;
+
+        case USART6:
+
+            SET_BIT(RCC->APB2ENR, HAL_RCC_APB2ENR_USART6EN_MASK);
+            break;
+
+        default:
+
+            break;
+
+    }
+
+}
+

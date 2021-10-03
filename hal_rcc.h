@@ -17,6 +17,7 @@
 #include "stm32f4xx.h"
 
 #include "hal_gpio.h"
+#include "hal_usart.h"
 
 
 /***********
@@ -105,6 +106,13 @@
 #define HAL_RCC_AHB1ENR_GPIODENR_POSITION RCC_AHB1ENR_GPIODENR_Pos  // GPIOD peripheral clock enable position
 #define HAL_RCC_AHB1ENR_GPIOEENR_POSITION RCC_AHB1ENR_GPIOEENR_Pos  // GPIOE peripheral clock enable position
 #define HAL_RCC_AHB1ENR_GPIOHENR_POSITION RCC_AHB1ENR_GPIOHENR_Pos  // GPIOH peripheral clock enable position
+
+/* RCC_APB2ENR Register Mask/Position */
+#define HAL_RCC_APB2ENR_USART1EN_MASK RCC_APB2ENR_USART1EN_Msk  // USART1 peripheral clock enable mask
+#define HAL_RCC_APB2ENR_USART6EN_MASK RCC_APB2ENR_USART6EN_Msk  // USART6 peripheral clock enable mask
+
+#define HAL_RCC_APB2ENR_USART1EN_POSITION RCC_APB2ENR_USART1EN_Pos  // USART1 peripheral clock enable position
+#define HAL_RCC_APB2ENR_USART6EN_POSITION RCC_APB2ENR_USART6EN_Pos  // USART6 peripheral clock enable position
 
 /* RCC_CFGR_SW (System Clock Switch) Enumerations */
 #define HAL_RCC_CFGR_SW_HSI (0x0)  // High-speed internal oscillator
@@ -248,6 +256,7 @@ void hal_rcc_DisablePLL(void);
 void hal_rcc_EnablePLLI2S(void);
 void hal_rcc_DisablePLLI2S(void);
 void hal_rcc_EnableGPIOClock(hal_gpio_Port gpio_port);
+void hal_rcc_EnableUSARTClock(hal_usart_Port usart_port);
 
 
 #endif /* __HAL_RCC */
