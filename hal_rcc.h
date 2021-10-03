@@ -16,6 +16,8 @@
 
 #include "stm32f4xx.h"
 
+#include "hal_gpio.h"
+
 
 /***********
 /* Defines *
@@ -88,6 +90,21 @@
 #define HAL_RCC_PLLI2SCFGR_PLLI2SM_POSITION RCC_PLLI2SCFGR_PLLI2SM_Pos  // I2S PLL M position
 #define HAL_RCC_PLLI2SCFGR_PLLI2SN_POSITION RCC_PLLI2SCFGR_PLLI2SN_Pos  // I2S PLL N position
 #define HAL_RCC_PLLI2SCFGR_PLLI2SR_POSITION RCC_PLLI2SCFGR_PLLI2SR_Pos  // I2S PLL R position
+
+/* RCC_AHB1ENR Register Mask/Position */
+#define HAL_RCC_AHB1ENR_GPIOAENR_MASK RCC_AHB1ENR_GPIOAENR_Msk  // GPIOA peripheral clock enable mask
+#define HAL_RCC_AHB1ENR_GPIOBENR_MASK RCC_AHB1ENR_GPIOBENR_Msk  // GPIOB peripheral clock enable mask
+#define HAL_RCC_AHB1ENR_GPIOCENR_MASK RCC_AHB1ENR_GPIOCENR_Msk  // GPIOC peripheral clock enable mask
+#define HAL_RCC_AHB1ENR_GPIODENR_MASK RCC_AHB1ENR_GPIODENR_Msk  // GPIOD peripheral clock enable mask
+#define HAL_RCC_AHB1ENR_GPIOEENR_MASK RCC_AHB1ENR_GPIOEENR_Msk  // GPIOE peripheral clock enable mask
+#define HAL_RCC_AHB1ENR_GPIOHENR_MASK RCC_AHB1ENR_GPIOHENR_Msk  // GPIOH peripheral clock enable mask
+
+#define HAL_RCC_AHB1ENR_GPIOAENR_POSITION RCC_AHB1ENR_GPIOAENR_Pos  // GPIOA peripheral clock enable position
+#define HAL_RCC_AHB1ENR_GPIOBENR_POSITION RCC_AHB1ENR_GPIOBENR_Pos  // GPIOB peripheral clock enable position
+#define HAL_RCC_AHB1ENR_GPIOCENR_POSITION RCC_AHB1ENR_GPIOCENR_Pos  // GPIOC peripheral clock enable position
+#define HAL_RCC_AHB1ENR_GPIODENR_POSITION RCC_AHB1ENR_GPIODENR_Pos  // GPIOD peripheral clock enable position
+#define HAL_RCC_AHB1ENR_GPIOEENR_POSITION RCC_AHB1ENR_GPIOEENR_Pos  // GPIOE peripheral clock enable position
+#define HAL_RCC_AHB1ENR_GPIOHENR_POSITION RCC_AHB1ENR_GPIOHENR_Pos  // GPIOH peripheral clock enable position
 
 /* RCC_CFGR_SW (System Clock Switch) Enumerations */
 #define HAL_RCC_CFGR_SW_HSI (0x0)  // High-speed internal oscillator
@@ -230,6 +247,7 @@ void hal_rcc_EnablePLL(void);
 void hal_rcc_DisablePLL(void);
 void hal_rcc_EnablePLLI2S(void);
 void hal_rcc_DisablePLLI2S(void);
+void hal_rcc_EnableGPIOClock(hal_gpio_Port gpio_port);
 
 
 #endif /* __HAL_RCC */
