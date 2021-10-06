@@ -17,6 +17,8 @@
 #include "stm32f4xx.h"
 
 #include "hal_gpio.h"
+#include "hal_i2c.h"
+#include "hal_i2s.h"
 #include "hal_usart.h"
 
 
@@ -106,6 +108,19 @@
 #define HAL_RCC_AHB1ENR_GPIODENR_POSITION RCC_AHB1ENR_GPIODENR_Pos  // GPIOD peripheral clock enable position
 #define HAL_RCC_AHB1ENR_GPIOEENR_POSITION RCC_AHB1ENR_GPIOEENR_Pos  // GPIOE peripheral clock enable position
 #define HAL_RCC_AHB1ENR_GPIOHENR_POSITION RCC_AHB1ENR_GPIOHENR_Pos  // GPIOH peripheral clock enable position
+
+/* RCC_APB1ENR Register Mask/Position */
+#define HAL_RCC_APB1ENR_I2C1EN_MASK RCC_APB2ENR_I2C1EN_Msk  // I2C1 peripheral clock enable mask
+#define HAL_RCC_APB1ENR_I2C2EN_MASK RCC_APB2ENR_I2C2EN_Msk  // I2C2 peripheral clock enable mask
+#define HAL_RCC_APB1ENR_I2C3EN_MASK RCC_APB2ENR_I2C3EN_Msk  // I2C3 peripheral clock enable mask
+#define HAL_RCC_APB1ENR_SPI2EN_MASK RCC_APB2ENR_SPI2EN_Msk  // SPI2 peripheral clock enable mask
+#define HAL_RCC_APB1ENR_SPI3EN_MASK RCC_APB2ENR_SPI3EN_Msk  // SPI3 peripheral clock enable mask
+
+#define HAL_RCC_APB2ENR_I2C1EN_POSITION RCC_APB2ENR_I2C1EN_Pos  // I2C1 peripheral clock enable position
+#define HAL_RCC_APB2ENR_I2C2EN_POSITION RCC_APB2ENR_I2C2EN_Pos  // I2C2 peripheral clock enable position
+#define HAL_RCC_APB2ENR_I2C3EN_POSITION RCC_APB2ENR_I2C3EN_Pos  // I2C3 peripheral clock enable position
+#define HAL_RCC_APB2ENR_SPI2EN_POSITION RCC_APB2ENR_SPI2EN_Pos  // SPI2 peripheral clock enable position
+#define HAL_RCC_APB2ENR_SPI3EN_POSITION RCC_APB2ENR_SPI3EN_Pos  // SPI3 peripheral clock enable position
 
 /* RCC_APB2ENR Register Mask/Position */
 #define HAL_RCC_APB2ENR_USART1EN_MASK RCC_APB2ENR_USART1EN_Msk  // USART1 peripheral clock enable mask
@@ -256,6 +271,8 @@ void hal_rcc_DisablePLL(void);
 void hal_rcc_EnablePLLI2S(void);
 void hal_rcc_DisablePLLI2S(void);
 void hal_rcc_EnableGPIOClock(hal_gpio_Port gpio_port);
+void hal_rcc_EnableI2CClock(hal_i2c_Port i2c_port);
+void hal_rcc_EnableI2SClock(hal_i2s_Port_t i2s_port);
 void hal_rcc_EnableUSARTClock(hal_usart_Port usart_port);
 
 
