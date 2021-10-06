@@ -251,6 +251,67 @@ void hal_rcc_EnableGPIOClock(hal_gpio_Port gpio_port)
 }
 
 /**
+ * @brief Enable the peripheral clock for the specified I2C port
+ * @param i2c_port I2C port for which the peripheral clock should be enabled
+ */
+void hal_rcc_EnableI2CClock(hal_i2c_Port i2c_port)
+{
+
+    switch(i2c_port)
+    {
+
+        case I2C1:
+
+            SET_BIT(RCC->APB1ENR, HAL_RCC_APB1ENR_I2C1EN_MASK);
+            break;
+
+        case I2C2:
+
+            SET_BIT(RCC->APB1ENR, HAL_RCC_APB1ENR_I2C2EN_MASK);
+            break;
+
+         case I2C3:
+
+            SET_BIT(RCC->APB1ENR, HAL_RCC_APB1ENR_I2C3EN_MASK);
+            break;
+
+        default:
+
+            break;
+
+    }
+
+}
+
+/**
+ * @brief Enable the peripheral clock for the specified I2S port
+ * @param i2s_port I2S port for which the peripheral clock should be enabled
+ */
+void hal_rcc_EnableI2SClock(hal_i2s_Port_t i2s_port)
+{
+
+    switch(i2s_port)
+    {
+
+        case SPI2:
+
+            SET_BIT(RCC->APB1ENR, HAL_RCC_APB1ENR_SPI2EN_MASK);
+            break;
+
+         case SPI3:
+
+            SET_BIT(RCC->APB1ENR, HAL_RCC_APB1ENR_SPI3EN_MASK);
+            break;
+
+        default:
+
+            break;
+
+    }
+
+}
+
+/**
  * @brief Enable the peripheral clock for the specified USART port
  * @param usart_port USART port for which the peripheral clock should be enabled
  */
