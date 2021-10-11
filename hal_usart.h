@@ -11,19 +11,19 @@
 
 
 /************
-/* Includes *
+ * Includes *
  ************/
 
 #include "stm32f4xx.h"
 
 
 /***********
-/* Defines *
+ * Defines *
  ***********/
 
 /* USART_SR Register Mask/Position */
-#define HAL_USART_SR_TXE_MASK     HAL_USART_SR_TXE_Msk  // Transmit data register empty mask
-#define HAL_USART_SR_TXE_POSITION HAL_USART_SR_TXE_Pos  // Transmit data register empty position
+#define HAL_USART_SR_TXE_MASK     USART_SR_TXE_Msk  // Transmit data register empty mask
+#define HAL_USART_SR_TXE_POSITION USART_SR_TXE_Pos  // Transmit data register empty position
 
 /* USART_BRR Register Mask/Position */
 #define HAL_USART_BRR_DIV_FRACTION_MASK USART_BRR_DIV_Fraction_Msk  // Baud rate divider fraction mask
@@ -54,8 +54,8 @@
 #define HAL_USART_CR1_OVER8_POSITION  USART_CR1_OVER8_Pos   // Oversampling mode position
 
 /* USART_CR2 Register Mask/Position */
-#define HAL_USART_CR2_STOP_MASK     HAL_USART_CR2_STOP_Msk  // Stop bits mask
-#define HAL_USART_CR2_STOP_POSITION HAL_USART_CR2_STOP_Pos  // Stop bits position
+#define HAL_USART_CR2_STOP_MASK     USART_CR2_STOP_Msk  // Stop bits mask
+#define HAL_USART_CR2_STOP_POSITION USART_CR2_STOP_Pos  // Stop bits position
 
 /* USART_CR1_PS (Parity Selection) Enumerations */
 #define HAL_USART_CR1_PS_EVEN (0x0)  // Even parity
@@ -76,16 +76,16 @@
 #define HAL_USART_CR2_STOP_1_5 (0x3)  // 1.5 stop bits
 
 /* USART_BRR Config Mask */
-#define HAL_USART_BRR_MASK (USART_BRR_DIV_MANTISSA_MASK | USART_BRR_DIV_FRACTION_MASK)
+#define HAL_USART_BRR_MASK (HAL_USART_BRR_DIV_MANTISSA_MASK | HAL_USART_BRR_DIV_FRACTION_MASK)
 
 /* USART_CR1 Config Mask */
-#define HAL_USART_CR1_MASK (USART_CR1_TE_MASK | \
-                            USART_CR1_RE_MASK | \
-                            USART_CR1_PCE_MASK | \
-                            USART_CR1_PS_MASK | \
-                            USART_CR1_M_MASK | \
-                            USART_CR1_UE_MASK | \
-                            USART_CR1_OVER8_MASK)
+#define HAL_USART_CR1_MASK (HAL_USART_CR1_TE_MASK | \
+                            HAL_USART_CR1_RE_MASK | \
+                            HAL_USART_CR1_PCE_MASK | \
+                            HAL_USART_CR1_PS_MASK | \
+                            HAL_USART_CR1_M_MASK | \
+                            HAL_USART_CR1_UE_MASK | \
+                            HAL_USART_CR1_OVER8_MASK)
 
 /* Defaults */
 #define HAL_USART_DEFAULT_RECEIVE_BUFFER_LENGTH 256  // Default length of the receive buffer
@@ -93,47 +93,46 @@
 
 
 /***************************
-/* Public Type Definitions *
+ * Public Type Definitions *
  ***************************/
 
 /* USART Port Definition */
-typedef USART_TypeDef hal_usart_Port;
+typedef USART_TypeDef hal_usart_Port_t;
 
 /* USART Configuration Field Definitions */
-typedef uint16_t hal_usart_BaudMantissa;
-typedef uint8_t  hal_usart_BaudFraction;
-typedef uint8_t  hal_usart_ParitySelection;
-typedef uint8_t  hal_usart_WordLength;
-typedef uint8_t  hal_usart_OversamplingMode;
-typedef uint8_t  hal_usart_StopBits;
-typedef bool     hal_usart_TransmitEnable;
-typedef bool     hal_usart_ReceiveEnable;
-typedef bool     hal_usart_ParityControlEnable;
-typedef bool     hal_usart_USARTEnable;
+typedef uint16_t hal_usart_BaudMantissa_t;
+typedef uint8_t  hal_usart_BaudFraction_t;
+typedef uint8_t  hal_usart_ParitySelection_t;
+typedef uint8_t  hal_usart_WordLength_t;
+typedef uint8_t  hal_usart_OversamplingMode_t;
+typedef uint8_t  hal_usart_StopBits_t;
+typedef bool     hal_usart_TransmitEnable_t;
+typedef bool     hal_usart_ReceiveEnable_t;
+typedef bool     hal_usart_ParityControlEnable_t;
+typedef bool     hal_usart_USARTEnable_t;
 
 /* USART Peripheral Instance Definition */
-typedef struct hal_usart_ConfigStruct
+typedef struct hal_usart_Config_s
 {
-    hal_usart_BaudMantissa        BaudMantissa;         // Baud rate divider mantissa
-    hal_usart_BaudFraction        BaudFraction;         // Baud rate divider fraction
-    hal_usart_TransmitEnable      TransmitEnable;       // USART transmitter enable
-    hal_usart_ReceiveEnable       ReceiveEnable;        // USART receiver enable
-    hal_usart_ParityControlEnable ParityControlEnable;  // Parity control enable
-    hal_usart_ParitySelection     ParitySelection;      // Parity mode
-    hal_usart_WordLength          WordLength;           // Word length
-    hal_usart_USARTEnable         USART_Enable;         // USART peripheral enable
-    hal_usart_OversamplingMode    OversamplingMode;     // Oversampling mode
-    hal_usart_StopBits            StopBits;             // Number of stop bits
-}hal_usart_ConfigStruct;
+    hal_usart_BaudMantissa_t        BaudMantissa;         // Baud rate divider mantissa
+    hal_usart_BaudFraction_t        BaudFraction;         // Baud rate divider fraction
+    hal_usart_TransmitEnable_t      TransmitEnable;       // USART transmitter enable
+    hal_usart_ReceiveEnable_t       ReceiveEnable;        // USART receiver enable
+    hal_usart_ParityControlEnable_t ParityControlEnable;  // Parity control enable
+    hal_usart_ParitySelection_t     ParitySelection;      // Parity mode
+    hal_usart_WordLength_t          WordLength;           // Word length
+    hal_usart_USARTEnable_t         USART_Enable;         // USART peripheral enable
+    hal_usart_OversamplingMode_t    OversamplingMode;     // Oversampling mode
+    hal_usart_StopBits_t            StopBits;             // Number of stop bits
+}hal_usart_Config_s;
 
 
 /******************************
-/* Public Function Prototypes *
+ * Public Function Prototypes *
  ******************************/
 
-void hal_usart_Init(hal_usart_Port *usart_port, hal_usart_ConfigStruct *config);
-void hal_usart_TransmitBlocking(hal_usart_Port *usart_port, char *data, uint32_t length);
-void hal_usart_TransmitNonBlocking(hal_usart_Port *usart_port, char *data, uint32_t length);
+void hal_usart_Init(hal_usart_Port_t *usart_port, hal_usart_Config_s *config);
+void hal_usart_TransmitBlocking(hal_usart_Port_t *usart_port, char *data, uint32_t length);
 
 
 #endif /* __HAL_USART */

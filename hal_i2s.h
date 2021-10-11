@@ -11,14 +11,14 @@
 
 
 /************
-/* Includes *
+ * Includes *
  ************/
 
 #include "stm32f4xx.h"
 
 
 /***********
-/* Defines *
+ * Defines *
  ***********/
 
 /* SPI_I2SCFGR Register Mask/Position */
@@ -26,7 +26,7 @@
 #define HAL_I2S_I2SCFGR_I2SSTD_MASK  SPI_I2SCFGR_I2SSTD_Msk   // I2S standard mask
 #define HAL_I2S_I2SCFGR_PCMSYNC_MASK SPI_I2SCFGR_PCMSYNC_Msk  // PCM sync mask
 #define HAL_I2S_I2SCFGR_CKPOL_MASK   SPI_I2SCFGR_CKPOL_Msk    // Clock polarity mask
-#define HAL_I2S_I2SCFGR_DATLEN_MASK  SPI_I2SCFGR_DATALEN_Msk  // Data length mask
+#define HAL_I2S_I2SCFGR_DATLEN_MASK  SPI_I2SCFGR_DATLEN_Msk  // Data length mask
 #define HAL_I2S_I2SCFGR_CHLEN_MASK   SPI_I2SCFGR_CHLEN_Msk    // Channel length mask
 #define HAL_I2S_I2SCFGR_I2SMOD_MASK  SPI_I2SCFGR_I2SMOD_Msk   // I2S/SPI peripheral mode mask
 #define HAL_I2S_I2SCFGR_I2SE_MASK    SPI_I2SCFGR_I2SE_Msk     // I2S enable mask
@@ -35,7 +35,7 @@
 #define HAL_I2S_I2SCFGR_I2SSTD_POSITION  SPI_I2SCFGR_I2SSTD_Pos   // I2S standard position
 #define HAL_I2S_I2SCFGR_PCMSYNC_POSITION SPI_I2SCFGR_PCMSYNC_Pos  // PCM sync position
 #define HAL_I2S_I2SCFGR_CKPOL_POSITION   SPI_I2SCFGR_CKPOL_Pos    // Clock polarity position
-#define HAL_I2S_I2SCFGR_DATLEN_POSITON   SPI_I2SCFGR_DATALEN_Pos  // Data length positon
+#define HAL_I2S_I2SCFGR_DATLEN_POSITON   SPI_I2SCFGR_DATLEN_Pos  // Data length positon
 #define HAL_I2S_I2SCFGR_CHLEN_POSITON    SPI_I2SCFGR_CHLEN_Pos    // Channel length position
 #define HAL_I2S_I2SCFGR_I2SMOD_POSITION  SPI_I2SCFGR_I2SMOD_Pos   // I2S/SPI peripheral mode position
 #define HAL_I2S_I2SCFGR_I2SE_POSITION    SPI_I2SCFGR_I2SE_Pos     // I2S enable position
@@ -98,7 +98,7 @@
 
 
 /***************************
-/* Public Type Definitions *
+ * Public Type Definitions *
  ***************************/
 
 /* I2S Port Definition */
@@ -129,11 +129,11 @@ typedef struct hal_i2s_ConfigStruct_s
 
 
 /******************************
-/* Public Function Prototypes *
+ * Public Function Prototypes *
  ******************************/
 
-void hal_i2s_Init(hal_i2s_Port_t i2s_port, hal_i2s_ConfigStruct_s *config);
-void hal_i2s_WriteData16Blocking(hal_i2s_Port_t i2s_port, uint16_t *data, uint32_t length);
+void hal_i2s_Init(hal_i2s_Port_t *i2s_port, hal_i2s_ConfigStruct_s *config);
+void hal_i2s_WriteData16Blocking(hal_i2s_Port_t *i2s_port, uint16_t *data, uint32_t length);
 
 
 #endif /* __HAL_I2S */

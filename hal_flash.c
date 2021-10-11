@@ -7,21 +7,21 @@
 
 
 /************
-/* Includes *
+ * Includes *
  ***********/
 
 #include "hal_flash.h"
 
 
 /********************
-/* Public Functions *
+ * Public Functions *
  ********************/
 
 /**
  * @brief Set flash access latency
  * @param latency Flash access latency in sysclk cycles
  */
-void hal_flash_SetLatency(hal_flash_Latency latency)
+void hal_flash_SetLatency(hal_flash_Latency_t latency)
 {
 
     MODIFY_REG(FLASH->ACR, HAL_FLASH_ACR_LATENCY_MASK, latency);

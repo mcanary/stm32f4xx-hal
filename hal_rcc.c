@@ -7,21 +7,21 @@
 
 
 /************
-/* Includes *
+ * Includes *
  ***********/
 
 #include "hal_rcc.h"
 
 
 /********************
-/* Public Functions *
+ * Public Functions *
  ********************/
 
 /**
  * @brief Configure the main PLL
  * @param pll_config Pointer to a struct containing pll configuration parameters
  */
-void hal_rcc_ConfigurePLL(hal_rcc_PLLConfigStruct *pll_config)
+void hal_rcc_ConfigurePLL(hal_rcc_PLLConfig_s *pll_config)
 {
 
     MODIFY_REG(RCC->PLLCFGR, HAL_RCC_PLLCFG_MASK, \
@@ -37,7 +37,7 @@ void hal_rcc_ConfigurePLL(hal_rcc_PLLConfigStruct *pll_config)
  * @brief Configure system and peripheral clocks
  * @param clock_config Pointer to a struct containing clock configuration parameters
  */
-void hal_rcc_ConfigureClocks(hal_rcc_ClockConfigStruct *clock_config)
+void hal_rcc_ConfigureClocks(hal_rcc_ClockConfig_s *clock_config)
 {
 
     MODIFY_REG(RCC->CFGR, HAL_RCC_CFGR_MASK, \
@@ -57,7 +57,7 @@ void hal_rcc_ConfigureClocks(hal_rcc_ClockConfigStruct *clock_config)
  * @brief Configure the I2S PLL
  * @param i2s_pll_config Pointer to a struct containing I2S PLL configuration parameters
  */
-void hal_rcc_ConfigureI2SPLL(hal_rcc_I2SPLLConfigStruct *i2s_pll_config)
+void hal_rcc_ConfigureI2SPLL(hal_rcc_I2SPLLConfig_s *i2s_pll_config)
 {
 
     MODIFY_REG(RCC->PLLI2SCFGR, HAL_RCC_PLLI2SCFGR_MASK, \
@@ -71,7 +71,7 @@ void hal_rcc_ConfigureI2SPLL(hal_rcc_I2SPLLConfigStruct *i2s_pll_config)
  * @brief Set the system clock source
  * @param source System clock source setting
  */
-void hal_rcc_SetSystemClockSource(hal_rcc_SystemClockSource source)
+void hal_rcc_SetSystemClockSource(hal_rcc_SystemClockSource_t source)
 {
 
     MODIFY_REG(RCC->CFGR, HAL_RCC_CFGR_SW_MASK, source);
@@ -128,7 +128,7 @@ bool hal_rcc_PLLI2SReady(void)
 void hal_rcc_EnableHSI(void)
 {
 
-    SET_BIT(rcc->CR, HAL_RCC_CR_HSION_MASK);
+    SET_BIT(RCC->CR, HAL_RCC_CR_HSION_MASK);
 
 }
 
@@ -138,7 +138,7 @@ void hal_rcc_EnableHSI(void)
 void hal_rcc_DisableHSI(void)
 {
 
-    CLEAR_BIT(rcc->CR, HAL_RCC_CR_HSION_MASK);
+    CLEAR_BIT(RCC->CR, HAL_RCC_CR_HSION_MASK);
 
 }
 
@@ -206,40 +206,40 @@ void hal_rcc_DisablePLLI2S(void)
  * @brief Enable the peripheral clock for the specified GPIO port
  * @param gpio_port GPIO port for which the peripheral clock should be enabled
  */
-void hal_rcc_EnableGPIOClock(hal_gpio_Port gpio_port)
+void hal_rcc_EnableGPIOClock(hal_gpio_Port_t *gpio_port)
 {
 
-    switch(gpio_port)
+    switch((uint32_t)gpio_port)
     {
 
-        case GPIOA:
+        case (uint32_t)GPIOA:
 
-            SET_BIT(RCC->AHB1ENR, HAL_RCC_AHB1ENR_GPIOAENR_MASK);
+            SET_BIT(RCC->AHB1ENR, HAL_RCC_AHB1ENR_GPIOAEN_MASK);
             break;
 
-        case GPIOB:
+        case (uint32_t)GPIOB:
 
-            SET_BIT(RCC->AHB1ENR, HAL_RCC_AHB1ENR_GPIOBENR_MASK);
+            SET_BIT(RCC->AHB1ENR, HAL_RCC_AHB1ENR_GPIOBEN_MASK);
             break;
 
-        case GPIOC:
+        case (uint32_t)GPIOC:
 
-            SET_BIT(RCC->AHB1ENR, HAL_RCC_AHB1ENR_GPIOCENR_MASK);
+            SET_BIT(RCC->AHB1ENR, HAL_RCC_AHB1ENR_GPIOCEN_MASK);
             break;
 
-        case GPIOD:
+        case (uint32_t)GPIOD:
 
-            SET_BIT(RCC->AHB1ENR, HAL_RCC_AHB1ENR_GPIODENR_MASK);
+            SET_BIT(RCC->AHB1ENR, HAL_RCC_AHB1ENR_GPIODEN_MASK);
             break;
 
-        case GPIOE:
+        case (uint32_t)GPIOE:
 
-            SET_BIT(RCC->AHB1ENR, HAL_RCC_AHB1ENR_GPIOEENR_MASK);
+            SET_BIT(RCC->AHB1ENR, HAL_RCC_AHB1ENR_GPIOEEN_MASK);
             break;
 
-        case GPIOH:
+        case (uint32_t)GPIOH:
 
-            SET_BIT(RCC->AHB1ENR, HAL_RCC_AHB1ENR_GPIOHENR_MASK);
+            SET_BIT(RCC->AHB1ENR, HAL_RCC_AHB1ENR_GPIOHEN_MASK);
             break;
 
         default:
@@ -254,23 +254,23 @@ void hal_rcc_EnableGPIOClock(hal_gpio_Port gpio_port)
  * @brief Enable the peripheral clock for the specified I2C port
  * @param i2c_port I2C port for which the peripheral clock should be enabled
  */
-void hal_rcc_EnableI2CClock(hal_i2c_Port i2c_port)
+void hal_rcc_EnableI2CClock(hal_i2c_Port_t *i2c_port)
 {
 
-    switch(i2c_port)
+    switch((uint32_t)i2c_port)
     {
 
-        case I2C1:
+        case (uint32_t)I2C1:
 
             SET_BIT(RCC->APB1ENR, HAL_RCC_APB1ENR_I2C1EN_MASK);
             break;
 
-        case I2C2:
+        case (uint32_t)I2C2:
 
             SET_BIT(RCC->APB1ENR, HAL_RCC_APB1ENR_I2C2EN_MASK);
             break;
 
-         case I2C3:
+         case (uint32_t)I2C3:
 
             SET_BIT(RCC->APB1ENR, HAL_RCC_APB1ENR_I2C3EN_MASK);
             break;
@@ -287,18 +287,18 @@ void hal_rcc_EnableI2CClock(hal_i2c_Port i2c_port)
  * @brief Enable the peripheral clock for the specified I2S port
  * @param i2s_port I2S port for which the peripheral clock should be enabled
  */
-void hal_rcc_EnableI2SClock(hal_i2s_Port_t i2s_port)
+void hal_rcc_EnableI2SClock(hal_i2s_Port_t *i2s_port)
 {
 
-    switch(i2s_port)
+    switch((uint32_t)i2s_port)
     {
 
-        case SPI2:
+        case (uint32_t)SPI2:
 
             SET_BIT(RCC->APB1ENR, HAL_RCC_APB1ENR_SPI2EN_MASK);
             break;
 
-         case SPI3:
+         case (uint32_t)SPI3:
 
             SET_BIT(RCC->APB1ENR, HAL_RCC_APB1ENR_SPI3EN_MASK);
             break;
@@ -315,18 +315,18 @@ void hal_rcc_EnableI2SClock(hal_i2s_Port_t i2s_port)
  * @brief Enable the peripheral clock for the specified USART port
  * @param usart_port USART port for which the peripheral clock should be enabled
  */
-void hal_rcc_EnableUSARTClock(hal_usart_Port usart_port)
+void hal_rcc_EnableUSARTClock(hal_usart_Port_t *usart_port)
 {
 
-    switch(usart_port)
+    switch((uint32_t)usart_port)
     {
 
-        case USART1:
+        case (uint32_t)USART1:
 
             SET_BIT(RCC->APB2ENR, HAL_RCC_APB2ENR_USART1EN_MASK);
             break;
 
-        case USART6:
+        case (uint32_t)USART6:
 
             SET_BIT(RCC->APB2ENR, HAL_RCC_APB2ENR_USART6EN_MASK);
             break;

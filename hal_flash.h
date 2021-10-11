@@ -11,14 +11,14 @@
 
 
 /************
-/* Includes *
+ * Includes *
  ***********/
 
 #include "stm32f4xx.h"
 
 
 /***********
-/* Defines *
+ * Defines *
  ***********/
 
 /* FLASH_ACR Register Mask/Position */
@@ -45,17 +45,17 @@
 
 
 /***************************
-/* Public Type Definitions *
+ * Public Type Definitions *
  ***************************/
 
-typedef uint8_t hal_flash_Latency;
+typedef uint8_t hal_flash_Latency_t;
 
 
 /******************************
-/* Public Function Prototypes *
+ * Public Function Prototypes *
  ******************************/
 
-void hal_flash_SetLatency(hal_flash_Latency latency);
+void hal_flash_SetLatency(hal_flash_Latency_t latency);
 
 
 #endif /* __HAL_FLASH */
