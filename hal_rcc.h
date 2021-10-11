@@ -29,7 +29,7 @@
 /* RCC_CFGR Register Mask/Position */
 #define HAL_RCC_CR_HSION_MASK     RCC_CR_HSION_Msk      // HSI enable mask
 #define HAL_RCC_CR_HSIRDY_MASK    RCC_CR_HSIRDY_Msk     // HSI ready mask
-#define HAL_RCC_CR_HSEON_MASK     RCC_CR_HSION_Msk      // HSE enable mask
+#define HAL_RCC_CR_HSEON_MASK     RCC_CR_HSEON_Msk      // HSE enable mask
 #define HAL_RCC_CR_HSERDY_MASK    RCC_CR_HSERDY_Msk     // HSE ready mask
 #define HAL_RCC_CR_HSEBYP_MASK    RCC_CR_HSEBYP_Msk     // HSE bypass mask
 #define HAL_RCC_CR_PLLON_MASK     RCC_CR_PLLON_Msk      // Main PLL enable mask
