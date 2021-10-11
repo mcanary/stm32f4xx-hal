@@ -11,14 +11,14 @@
 
 
 /************
-/* Includes *
+ * Includes *
  ************/
 
 #include "stm32f4xx.h"
 
 
 /***********
-/* Defines *
+ * Defines *
  ***********/
 
 /* I2C_CR1 Register Mask/Position */
@@ -53,8 +53,8 @@
 #define HAL_I2C_SR1_TXE_POSITION  I2C_SR1_TXE_Pos   // Transmit register empty position
 
 /* I2C_SR2 Register Mask/Position */
-#define HAL_I2C_SR2_BUSY_MASK     I2C_SR1_BUSY_Msk    // Bus busy mask
-#define HAL_I2C_SR2_BUSY_POSITION I2C_SR1_BUSY_Pos    // Bus busy position
+#define HAL_I2C_SR2_BUSY_MASK     I2C_SR2_BUSY_Msk    // Bus busy mask
+#define HAL_I2C_SR2_BUSY_POSITION I2C_SR2_BUSY_Pos    // Bus busy position
 
 /* I2C_CCR Register Mask/Position */
 #define HAL_I2C_CCR_CCR_MASK I2C_CCR_CCR_Msk  // Clock control register mask
@@ -75,29 +75,27 @@
 
 
 /***************************
-/* Public Type Definitions *
+ * Public Type Definitions *
  ***************************/
 
-typedef I2C_TypeDef hal_i2c_Port;
+typedef I2C_TypeDef hal_i2c_Port_t;
 
-typedef struct hal_i2c_ConfigStruct
+typedef struct hal_i2c_Config_s
 {
     uint32_t APB_ClockFrequency;  // APB clock frequency
-    bool FastMode;                // Fast mode enable
-    bool I2C_Enable;              // I2C peripheral enable
-}hal_i2c_ConfigStruct;
+    bool     FastMode;            // Fast mode enable
+    bool     I2C_Enable;          // I2C peripheral enable
+}hal_i2c_Config_s;
 
 
 /******************************
-/* Public Function Prototypes *
+ * Public Function Prototypes *
  ******************************/
 
-void hal_i2c_Init(hal_i2c_Port *i2c_port, hal_i2c_ConfigStruct *config);
-bool hal_i2c_IsBusy(hal_i2c_Port *i2c_port);
-void hal_i2c_WriteDataBlocking(hal_i2c_Port *i2c_port, uint8_t dev_address, uint8_t *reg_address, uint8_t address_length, uint8_t *data, uint8_t data_length);
-void hal_i2c_ReadDataBlocking(hal_i2c_Port *i2c_port, uint8_t dev_address, uint8_t *reg_address, uint8_t address_length, uint8_t *data, uint8_t data_length);
-void hal_i2c_WriteDataNonBlocking(hal_i2c_Port *i2c_port, uint8_t dev_address, uint8_t *reg_address, uint8_t address_length, uint8_t *data, uint8_t data_length);
-void hal_i2c_ReadDataNonBlocking(hal_i2c_Port *i2c_port, uint8_t dev_address, uint8_t *reg_address, uint8_t address_length, uint8_t *data, uint8_t data_length);
+void hal_i2c_Init(hal_i2c_Port_t *i2c_port, hal_i2c_Config_s *config);
+bool hal_i2c_IsBusy(hal_i2c_Port_t *i2c_port);
+void hal_i2c_WriteDataBlocking(hal_i2c_Port_t *i2c_port, uint8_t dev_address, uint8_t *reg_address, uint8_t address_length, uint8_t *data, uint8_t data_length);
+void hal_i2c_ReadDataBlocking(hal_i2c_Port_t *i2c_port, uint8_t dev_address, uint8_t *reg_address, uint8_t address_length, uint8_t *data, uint8_t data_length);
 
 
 #endif /* __HAL_I2C */

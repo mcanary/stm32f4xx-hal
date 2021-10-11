@@ -11,14 +11,14 @@
 
 
 /************
-/* Includes *
+ * Includes *
  ************/
 
 #include "stm32f4xx.h"
 
 
 /***********
-/* Defines *
+ * Defines *
  ***********/
 
 /* GPIO Config Field Width Enumerations */
@@ -72,35 +72,35 @@
 
 
 /********************
-/* Type Definitions *
+ * Type Definitions *
  ********************/
 
-typedef GPIO_TypeDef hal_gpio_Port;
-typedef uint8_t hal_gpio_Pin;
-typedef uint8_t hal_gpio_Mode;
-typedef uint8_t hal_gpio_OutputType;
-typedef uint8_t hal_gpio_OutputSpeed;
-typedef uint8_t hal_gpio_PullUpPullDown;
-typedef uint8_t hal_gpio_AlternateFunction;
+typedef GPIO_TypeDef hal_gpio_Port_t;
+typedef uint8_t hal_gpio_Pin_t;
+typedef uint8_t hal_gpio_Mode_t;
+typedef uint8_t hal_gpio_OutputType_t;
+typedef uint8_t hal_gpio_OutputSpeed_t;
+typedef uint8_t hal_gpio_PullUpPullDown_t;
+typedef uint8_t hal_gpio_AlternateFunction_t;
 
-typedef struct hal_gpio_ConfigStruct
+typedef struct hal_gpio_Config_s
 {
-    HAL_GPIO_Mode              Mode;               // GPIO pin mode
-    HAL_GPIO_OutputType        OutputType;         // GPIO pin output type config
-    HAL_GPIO_OutputSpeed       OutputSpeed;        // GPIO pin output speed config
-    HAL_GPIO_PullUpPullDown    PullUpPullDown;     // GPIO pin pull-up/pull-down config
-    HAL_GPIO_AlternateFunction AlternateFunction;  // GPIO pin alternate function config
-}hal_gpio_ConfigStruct;
+    hal_gpio_Mode_t              Mode;               // GPIO pin mode
+    hal_gpio_OutputType_t        OutputType;         // GPIO pin output type config
+    hal_gpio_OutputSpeed_t       OutputSpeed;        // GPIO pin output speed config
+    hal_gpio_PullUpPullDown_t    PullUpPullDown;     // GPIO pin pull-up/pull-down config
+    hal_gpio_AlternateFunction_t AlternateFunction;  // GPIO pin alternate function config
+}hal_gpio_Config_s;
 
 
 /*******************************
-/* Public Function Definitions *
+ * Public Function Definitions *
  *******************************/
 
-void hal_gpio_Init(hal_gpio_Port *port, hal_gpio_Pin pin, hal_gpio_ConfigStruct *config);
-bool hal_gpio_Read(hal_gpio_Port *port, hal_gpio_Pin pin);
-void hal_gpio_Write(hal_gpio_Port *port, hal_gpio_Pin pin, bool data);
-void hal_gpio_Toggle(hal_gpio_Port *port, hal_gpio_Pin pin);
+void hal_gpio_Init(hal_gpio_Port_t *port, hal_gpio_Pin_t pin, hal_gpio_Config_s *config);
+bool hal_gpio_Read(hal_gpio_Port_t *port, hal_gpio_Pin_t pin);
+void hal_gpio_Write(hal_gpio_Port_t *port, hal_gpio_Pin_t pin, bool data);
+void hal_gpio_Toggle(hal_gpio_Port_t *port, hal_gpio_Pin_t pin);
 
 
 #endif /* __HAL_GPIO */

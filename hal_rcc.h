@@ -11,7 +11,7 @@
 
 
 /************
-/* Includes *
+ * Includes *
  ************/
 
 #include "stm32f4xx.h"
@@ -23,7 +23,7 @@
 
 
 /***********
-/* Defines *
+ * Defines *
  ***********/
 
 /* RCC_CFGR Register Mask/Position */
@@ -95,32 +95,32 @@
 #define HAL_RCC_PLLI2SCFGR_PLLI2SR_POSITION RCC_PLLI2SCFGR_PLLI2SR_Pos  // I2S PLL R position
 
 /* RCC_AHB1ENR Register Mask/Position */
-#define HAL_RCC_AHB1ENR_GPIOAENR_MASK RCC_AHB1ENR_GPIOAENR_Msk  // GPIOA peripheral clock enable mask
-#define HAL_RCC_AHB1ENR_GPIOBENR_MASK RCC_AHB1ENR_GPIOBENR_Msk  // GPIOB peripheral clock enable mask
-#define HAL_RCC_AHB1ENR_GPIOCENR_MASK RCC_AHB1ENR_GPIOCENR_Msk  // GPIOC peripheral clock enable mask
-#define HAL_RCC_AHB1ENR_GPIODENR_MASK RCC_AHB1ENR_GPIODENR_Msk  // GPIOD peripheral clock enable mask
-#define HAL_RCC_AHB1ENR_GPIOEENR_MASK RCC_AHB1ENR_GPIOEENR_Msk  // GPIOE peripheral clock enable mask
-#define HAL_RCC_AHB1ENR_GPIOHENR_MASK RCC_AHB1ENR_GPIOHENR_Msk  // GPIOH peripheral clock enable mask
+#define HAL_RCC_AHB1ENR_GPIOAEN_MASK RCC_AHB1ENR_GPIOAEN_Msk  // GPIOA peripheral clock enable mask
+#define HAL_RCC_AHB1ENR_GPIOBEN_MASK RCC_AHB1ENR_GPIOBEN_Msk  // GPIOB peripheral clock enable mask
+#define HAL_RCC_AHB1ENR_GPIOCEN_MASK RCC_AHB1ENR_GPIOCEN_Msk  // GPIOC peripheral clock enable mask
+#define HAL_RCC_AHB1ENR_GPIODEN_MASK RCC_AHB1ENR_GPIODEN_Msk  // GPIOD peripheral clock enable mask
+#define HAL_RCC_AHB1ENR_GPIOEEN_MASK RCC_AHB1ENR_GPIOEEN_Msk  // GPIOE peripheral clock enable mask
+#define HAL_RCC_AHB1ENR_GPIOHEN_MASK RCC_AHB1ENR_GPIOHEN_Msk  // GPIOH peripheral clock enable mask
 
-#define HAL_RCC_AHB1ENR_GPIOAENR_POSITION RCC_AHB1ENR_GPIOAENR_Pos  // GPIOA peripheral clock enable position
-#define HAL_RCC_AHB1ENR_GPIOBENR_POSITION RCC_AHB1ENR_GPIOBENR_Pos  // GPIOB peripheral clock enable position
-#define HAL_RCC_AHB1ENR_GPIOCENR_POSITION RCC_AHB1ENR_GPIOCENR_Pos  // GPIOC peripheral clock enable position
-#define HAL_RCC_AHB1ENR_GPIODENR_POSITION RCC_AHB1ENR_GPIODENR_Pos  // GPIOD peripheral clock enable position
-#define HAL_RCC_AHB1ENR_GPIOEENR_POSITION RCC_AHB1ENR_GPIOEENR_Pos  // GPIOE peripheral clock enable position
-#define HAL_RCC_AHB1ENR_GPIOHENR_POSITION RCC_AHB1ENR_GPIOHENR_Pos  // GPIOH peripheral clock enable position
+#define HAL_RCC_AHB1ENR_GPIOAEN_POSITION RCC_AHB1ENR_GPIOAEN_Pos  // GPIOA peripheral clock enable position
+#define HAL_RCC_AHB1ENR_GPIOBEN_POSITION RCC_AHB1ENR_GPIOBEN_Pos  // GPIOB peripheral clock enable position
+#define HAL_RCC_AHB1ENR_GPIOCEN_POSITION RCC_AHB1ENR_GPIOCEN_Pos  // GPIOC peripheral clock enable position
+#define HAL_RCC_AHB1ENR_GPIODEN_POSITION RCC_AHB1ENR_GPIODEN_Pos  // GPIOD peripheral clock enable position
+#define HAL_RCC_AHB1ENR_GPIOEEN_POSITION RCC_AHB1ENR_GPIOEEN_Pos  // GPIOE peripheral clock enable position
+#define HAL_RCC_AHB1ENR_GPIOHEN_POSITION RCC_AHB1ENR_GPIOHEN_Pos  // GPIOH peripheral clock enable position
 
 /* RCC_APB1ENR Register Mask/Position */
-#define HAL_RCC_APB1ENR_I2C1EN_MASK RCC_APB2ENR_I2C1EN_Msk  // I2C1 peripheral clock enable mask
-#define HAL_RCC_APB1ENR_I2C2EN_MASK RCC_APB2ENR_I2C2EN_Msk  // I2C2 peripheral clock enable mask
-#define HAL_RCC_APB1ENR_I2C3EN_MASK RCC_APB2ENR_I2C3EN_Msk  // I2C3 peripheral clock enable mask
-#define HAL_RCC_APB1ENR_SPI2EN_MASK RCC_APB2ENR_SPI2EN_Msk  // SPI2 peripheral clock enable mask
-#define HAL_RCC_APB1ENR_SPI3EN_MASK RCC_APB2ENR_SPI3EN_Msk  // SPI3 peripheral clock enable mask
+#define HAL_RCC_APB1ENR_I2C1EN_MASK RCC_APB1ENR_I2C1EN_Msk  // I2C1 peripheral clock enable mask
+#define HAL_RCC_APB1ENR_I2C2EN_MASK RCC_APB1ENR_I2C2EN_Msk  // I2C2 peripheral clock enable mask
+#define HAL_RCC_APB1ENR_I2C3EN_MASK RCC_APB1ENR_I2C3EN_Msk  // I2C3 peripheral clock enable mask
+#define HAL_RCC_APB1ENR_SPI2EN_MASK RCC_APB1ENR_SPI2EN_Msk  // SPI2 peripheral clock enable mask
+#define HAL_RCC_APB1ENR_SPI3EN_MASK RCC_APB1ENR_SPI3EN_Msk  // SPI3 peripheral clock enable mask
 
-#define HAL_RCC_APB2ENR_I2C1EN_POSITION RCC_APB2ENR_I2C1EN_Pos  // I2C1 peripheral clock enable position
-#define HAL_RCC_APB2ENR_I2C2EN_POSITION RCC_APB2ENR_I2C2EN_Pos  // I2C2 peripheral clock enable position
-#define HAL_RCC_APB2ENR_I2C3EN_POSITION RCC_APB2ENR_I2C3EN_Pos  // I2C3 peripheral clock enable position
-#define HAL_RCC_APB2ENR_SPI2EN_POSITION RCC_APB2ENR_SPI2EN_Pos  // SPI2 peripheral clock enable position
-#define HAL_RCC_APB2ENR_SPI3EN_POSITION RCC_APB2ENR_SPI3EN_Pos  // SPI3 peripheral clock enable position
+#define HAL_RCC_APB1ENR_I2C1EN_POSITION RCC_APB1ENR_I2C1EN_Pos  // I2C1 peripheral clock enable position
+#define HAL_RCC_APB1ENR_I2C2EN_POSITION RCC_APB1ENR_I2C2EN_Pos  // I2C2 peripheral clock enable position
+#define HAL_RCC_APB1ENR_I2C3EN_POSITION RCC_APB1ENR_I2C3EN_Pos  // I2C3 peripheral clock enable position
+#define HAL_RCC_APB1ENR_SPI2EN_POSITION RCC_APB1ENR_SPI2EN_Pos  // SPI2 peripheral clock enable position
+#define HAL_RCC_APB1ENR_SPI3EN_POSITION RCC_APB1ENR_SPI3EN_Pos  // SPI3 peripheral clock enable position
 
 /* RCC_APB2ENR Register Mask/Position */
 #define HAL_RCC_APB2ENR_USART1EN_MASK RCC_APB2ENR_USART1EN_Msk  // USART1 peripheral clock enable mask
@@ -210,54 +210,54 @@
 
 
 /******************** 
-/* Type Definitions *
+ * Type Definitions *
  ********************/
 
-typedef uint8_t hal_rcc_SystemClockSource;
-typedef uint8_t hal_rcc_PLLSource;
-typedef uint8_t hal_rcc_PLLP;
-typedef uint8_t hal_rcc_MCO1Source;
-typedef uint8_t hal_rcc_MCO2Source;
-typedef uint8_t hal_rcc_PLLI2SSource;
+typedef uint8_t hal_rcc_SystemClockSource_t;
+typedef uint8_t hal_rcc_PLLSource_t;
+typedef uint8_t hal_rcc_PLLP_t;
+typedef uint8_t hal_rcc_MCO1Source_t;
+typedef uint8_t hal_rcc_MCO2Source_t;
+typedef uint8_t hal_rcc_PLLI2SSource_t;
 
-typedef struct hal_rcc_PLLConfigStruct
+typedef struct hal_rcc_PLLConfig_s
 {
-    uint8_t           PLL_M;       // Main PLL M
-    uint16_t          PLL_N;       // Main PLL N
-    hal_rcc_PLLP      PLL_P;       // Main PLL P
-    hal_rcc_PLLSource PLL_Source;  // Main PLL source
-    uint8_t           PLL_Q;       // Main PLL Q
-}hal_rcc_PLLConfigStruct;
+    uint8_t             PLL_M;       // Main PLL M
+    uint16_t            PLL_N;       // Main PLL N
+    hal_rcc_PLLP_t      PLL_P;       // Main PLL P
+    hal_rcc_PLLSource_t PLL_Source;  // Main PLL source
+    uint8_t             PLL_Q;       // Main PLL Q
+}hal_rcc_PLLConfig_s;
 
-typedef struct hal_rcc_ClockConfigStruct
+typedef struct hal_rcc_ClockConfig_s
 {
-    uint8_t              AHB_Prescaler;   // Prescaler for AHB peripheral clocks
-    uint8_t              APB1_Prescaler;  // Prescaler for APB1 peripheral clocks
-    uint8_t              APB2_Prescaler;  // Prescaler for APB2 peripheral clocks
-    uint8_t              RTC_Prescaler;   // RTC prescaler
-    hal_rcc_MCO1Source   MCO1_Source;     // Microcontroller clock output 1 source
-    hal_rcc_MCO2Source   MCO2_Source;     // Microcontroller clock output 2 source
-    uint8_t              MCO1_Prescaler;  // Microcontroller clock output 2 prescaler
-    uint8_t              MCO2_Prescaler;  // Microcontroller clock output 2 prescaler
-    hal_rcc_PLLI2SSource I2S_Source;      // I2S PLL source
-}hal_rcc_ClockConfigStruct;
+    uint8_t                AHB_Prescaler;   // Prescaler for AHB peripheral clocks
+    uint8_t                APB1_Prescaler;  // Prescaler for APB1 peripheral clocks
+    uint8_t                APB2_Prescaler;  // Prescaler for APB2 peripheral clocks
+    uint8_t                RTC_Prescaler;   // RTC prescaler
+    hal_rcc_MCO1Source_t   MCO1_Source;     // Microcontroller clock output 1 source
+    hal_rcc_MCO2Source_t   MCO2_Source;     // Microcontroller clock output 2 source
+    uint8_t                MCO1_Prescaler;  // Microcontroller clock output 2 prescaler
+    uint8_t                MCO2_Prescaler;  // Microcontroller clock output 2 prescaler
+    hal_rcc_PLLI2SSource_t I2S_Source;      // I2S PLL source
+}hal_rcc_ClockConfig_s;
 
-typedef struct hal_rcc_I2SPLLConfigStruct
+typedef struct hal_rcc_I2SPLLConfig_s
 {
     uint8_t  PLLI2S_M;  // I2S PLL M
     uint16_t PLLI2S_N;  // I2S PLL N
     uint8_t  PLLI2S_R;  // I2S PLL R
-}hal_rcc_I2SPLLConfigStruct;
+}hal_rcc_I2SPLLConfig_s;
 
 
 /******************************
-/* Public Function Prototypes *
+ * Public Function Prototypes *
  ******************************/
 
-void hal_rcc_ConfigurePLL(hal_rcc_PLLConfigStruct *pll_config);
-void hal_rcc_ConfigureClocks(hal_rcc_ClockConfigStruct *clock_config);
-void hal_rcc_ConfigureI2SPLL(hal_rcc_I2SPLLConfigStruct *i2s_pll_config);
-void hal_rcc_SetSystemClockSource(hal_rcc_SystemClockSource source);
+void hal_rcc_ConfigurePLL(hal_rcc_PLLConfig_s *pll_config);
+void hal_rcc_ConfigureClocks(hal_rcc_ClockConfig_s *clock_config);
+void hal_rcc_ConfigureI2SPLL(hal_rcc_I2SPLLConfig_s *i2s_pll_config);
+void hal_rcc_SetSystemClockSource(hal_rcc_SystemClockSource_t source);
 bool hal_rcc_HSIReady(void);
 bool hal_rcc_HSEReady(void);
 bool hal_rcc_PLLReady(void);
@@ -270,10 +270,10 @@ void hal_rcc_EnablePLL(void);
 void hal_rcc_DisablePLL(void);
 void hal_rcc_EnablePLLI2S(void);
 void hal_rcc_DisablePLLI2S(void);
-void hal_rcc_EnableGPIOClock(hal_gpio_Port gpio_port);
-void hal_rcc_EnableI2CClock(hal_i2c_Port i2c_port);
-void hal_rcc_EnableI2SClock(hal_i2s_Port_t i2s_port);
-void hal_rcc_EnableUSARTClock(hal_usart_Port usart_port);
+void hal_rcc_EnableGPIOClock(hal_gpio_Port_t *gpio_port);
+void hal_rcc_EnableI2CClock(hal_i2c_Port_t *i2c_port);
+void hal_rcc_EnableI2SClock(hal_i2s_Port_t *i2s_port);
+void hal_rcc_EnableUSARTClock(hal_usart_Port_t *usart_port);
 
 
 #endif /* __HAL_RCC */

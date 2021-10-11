@@ -10,15 +10,15 @@
 
 
 /*******************************
-/* Private Function Prototypes *
+ * Private Function Prototypes *
  *******************************/
 
-static inline uint32_t hal_gpio_ShiftPinConfig(uint8_t config, uint8_t config_width, hal_gpio_Pin pin);
-static inline uint32_t hal_gpio_PinMask(uint8_t config_width, hal_gpio_Pin pin);
+static inline uint32_t hal_gpio_ShiftPinConfig(uint8_t config, uint8_t config_width, hal_gpio_Pin_t pin);
+static inline uint32_t hal_gpio_PinMask(uint8_t config_width, hal_gpio_Pin_t pin);
 
 
 /********************
-/* Public Functions *
+ * Public Functions *
  ********************/
 
 /**
@@ -27,7 +27,7 @@ static inline uint32_t hal_gpio_PinMask(uint8_t config_width, hal_gpio_Pin pin);
  * @param pin    GPIO pin number
  * @param config Pointer to a struct containing the GPIO pin configuration parameters
  */
-void hal_gpio_Init(hal_gpio_Port *port, hal_gpio_Pin pin, hal_gpio_ConfigStruct *config)
+void hal_gpio_Init(hal_gpio_Port_t *port, hal_gpio_Pin_t pin, hal_gpio_Config_s *config)
 {
 
     MODIFY_REG(port->MODER, hal_gpio_PinMask(HAL_GPIO_MODER_WIDTH, pin), \
@@ -61,7 +61,7 @@ void hal_gpio_Init(hal_gpio_Port *port, hal_gpio_Pin pin, hal_gpio_ConfigStruct 
  * @param pin  GPIO pin number
  * @return State of the specified GPIO pin
  */
-bool hal_gpio_Read(hal_gpio_Port *port, hal_gpio_Pin pin)
+bool hal_gpio_Read(hal_gpio_Port_t *port, hal_gpio_Pin_t pin)
 {
 
     if((port->MODER >> (pin * 2)) & 0x3)  // If pin configured as input
@@ -85,7 +85,7 @@ bool hal_gpio_Read(hal_gpio_Port *port, hal_gpio_Pin pin)
  * @param pin  GPIO pin number
  * @param data Digital value to write to the specified GPIO pin
  */
-void hal_gpio_Write(hal_gpio_Port *port, hal_gpio_Pin pin, bool data)
+void hal_gpio_Write(hal_gpio_Port_t *port, hal_gpio_Pin_t pin, bool data)
 {
 
     if(data)
@@ -108,7 +108,7 @@ void hal_gpio_Write(hal_gpio_Port *port, hal_gpio_Pin pin, bool data)
  * @param port Peripheral base address for the GPIO port of interest
  * @param pin  GPIO pin number
  */
-void hal_gpio_Toggle(hal_gpio_Port *port, hal_gpio_Pin pin)
+void hal_gpio_Toggle(hal_gpio_Port_t *port, hal_gpio_Pin_t pin)
 {
 
     hal_gpio_Write(port, pin, !hal_gpio_Read(port, pin));
@@ -117,7 +117,7 @@ void hal_gpio_Toggle(hal_gpio_Port *port, hal_gpio_Pin pin)
 
 
 /*********************
-/* Private Functions *
+ * Private Functions *
  *********************/
 
 /**
@@ -126,7 +126,7 @@ void hal_gpio_Toggle(hal_gpio_Port *port, hal_gpio_Pin pin)
  * @param config_width Bit width of the config that's being shifted
  * @param pin          GPIO pin of interest
  */
-static inline uint32_t hal_gpio_ShiftPinConfig(uint8_t config, uint8_t config_width, hal_gpio_Pin pin)
+static inline uint32_t hal_gpio_ShiftPinConfig(uint8_t config, uint8_t config_width, hal_gpio_Pin_t pin)
 {
 
     return ((uint32_t)config) << (config_width * pin);
@@ -138,7 +138,7 @@ static inline uint32_t hal_gpio_ShiftPinConfig(uint8_t config, uint8_t config_wi
  * @param config_width Bit width of the config
  * @param pin          GPIO pin of interest
  */
-static inline uint32_t hal_gpio_PinMask(uint8_t config_width, hal_gpio_Pin pin)
+static inline uint32_t hal_gpio_PinMask(uint8_t config_width, hal_gpio_Pin_t pin)
 {
 
     return ((1 << config_width) - 1) << (config_width * pin);
