@@ -51,9 +51,10 @@ void hal_i2s_Init(hal_i2s_Port_t *i2s_port, hal_i2s_ConfigStruct_s *config)
 void hal_i2s_WriteData16Blocking(hal_i2s_Port_t *i2s_port, uint16_t *data, uint32_t length)
 {
 
-    for(uint32_t index = 0; index < length; index++)
+    // Assume mono audio
+    for(uint32_t index = 0; index < (length * 2); index++)
     {
-        WRITE_REG(i2s_port->DR, data[index]);
+        WRITE_REG(i2s_port->DR, data[(uint32_t)(index / 2)]);
         while(!READ_BIT(i2s_port->SR, HAL_I2S_SR_TXE_MASK));
     }
 
