@@ -16,6 +16,8 @@
 
 #include "stm32f4xx.h"
 
+#include "hal_dma.h"
+
 
 /***********
  * Defines *
@@ -115,7 +117,7 @@ typedef uint8_t hal_i2s_ChannelLength_t;
 /* I2S Configuration Struct */
 typedef struct hal_i2s_ConfigStruct_s
 {
-    hal_i2s_BusMode_t       BusMode;             // Bus moe (e.g. master transmit)
+    hal_i2s_BusMode_t       BusMode;             // Bus mode (e.g. master transmit)
     hal_i2s_PCMSync_t       PCMSync;             // PCM frame sync setting
     hal_i2s_Standard_t      Standard;            // I2S standard to follow (e.g. Phillips, RJ,LJ)
     hal_i2s_ClockPolarity_t ClockPolarity;       // I2S bus clock state during idle (High/low)
@@ -133,7 +135,9 @@ typedef struct hal_i2s_ConfigStruct_s
  ******************************/
 
 void hal_i2s_Init(hal_i2s_Port_t *i2s_port, hal_i2s_ConfigStruct_s *config);
-void hal_i2s_WriteData16Blocking(hal_i2s_Port_t *i2s_port, uint16_t *data, uint32_t length);
+void hal_i2s_WriteData16Blocking(hal_i2s_Port_t *i2s_port, int16_t *data, uint32_t length);
+void hal_i2s_WriteData16NonBlocking(hal_i2s_Port_t *i2s_port, hal_dma_Stream_t *dma_stream, hal_dma_Channel_t dma_channel, int16_t *data, uint32_t length);
+void hal_i2s_StopWrite(hal_dma_Stream_t *dma_stream);
 
 
 #endif /* __HAL_I2S */
